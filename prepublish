@@ -18,7 +18,7 @@ world() {
         | ndjson-map '(d.id = d.properties.iso_a3, delete d.properties, d)' \
         | geostitch -n) \
     | topomerge land=countries \
-    | toposimplify -P 0.25 -F \
+    | toposimplify -P 0.2 -F \
     > world/$1.json
   shp2json -n build/ne_$1_admin_0_countries.shp \
     | ndjson-map 'd.properties' \
@@ -28,4 +28,4 @@ world() {
 }
 
 world 110m
-world 50m
+#world 50m
